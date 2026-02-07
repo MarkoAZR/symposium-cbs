@@ -1,0 +1,70 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  iconBg: string;
+  links?: Array<{
+    label: string;
+    href: string;
+    format: string;
+  }>;
+  features?: string[];
+}
+
+const { title, description, icon, iconBg, links, features } = Astro.props;
+---
+
+<div
+  class="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 p-6 transition hover:shadow-xl hover:-translate-y-1"
+>
+  <div
+    class={`h-12 w-12 ${iconBg} rounded-lg flex items-center justify-center mb-4`}
+  >
+    <span class="material-icons text-2xl">{icon}</span>
+  </div>
+  <h3 class="text-xl font-semibold mb-2 text-slate-900 dark:text-white">
+    {title}
+  </h3>
+  <p class="text-slate-600 dark:text-slate-400 text-sm mb-6">{description}</p>
+
+  {
+    links && (
+      <div class="space-y-3 mb-6">
+        {links.map((link) => (
+          <a
+            href={link.href}
+            class="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600 transition group border border-slate-200 dark:border-slate-600"
+          >
+            <div class="flex items-center gap-3">
+              <span class="material-icons text-orange-500 text-sm">
+                description
+              </span>
+              <span class="text-sm font-medium text-slate-900 dark:text-white">
+                {link.label}
+              </span>
+            </div>
+            <span class="material-icons text-slate-400 group-hover:text-blue-600 text-sm">
+              download
+            </span>
+          </a>
+        ))}
+      </div>
+    )
+  }
+
+  {
+    features && (
+      <ul class="space-y-3 text-sm text-slate-700 dark:text-slate-300">
+        {features.map((feature) => (
+          <li class="flex items-start gap-2">
+            <span class="material-icons text-green-500 text-base mt-0.5 flex-shrink-0">
+              check_circle
+            </span>
+            <span>{feature}</span>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</div>

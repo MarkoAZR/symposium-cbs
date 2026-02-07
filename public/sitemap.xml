@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:i18n="http://www.w3.org/1999/xhtml">
+  <!-- Spanish Pages -->
+  <url>
+    <loc>https://markoazr.github.io/symposium-cbs/es/</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <i18n:link rel="alternate" hreflang="en" href="https://markoazr.github.io/symposium-cbs/en/"/>
+  </url>
+  <url>
+    <loc>https://markoazr.github.io/symposium-cbs/es/programa/</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <i18n:link rel="alternate" hreflang="en" href="https://markoazr.github.io/symposium-cbs/en/program/"/>
+  </url>
+  <url>
+    <loc>https://markoazr.github.io/symposium-cbs/es/recursos/</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <i18n:link rel="alternate" hreflang="en" href="https://markoazr.github.io/symposium-cbs/en/resources/"/>
+  </url>
+  <url>
+    <loc>https://markoazr.github.io/symposium-cbs/es/equipo/</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <i18n:link rel="alternate" hreflang="en" href="https://markoazr.github.io/symposium-cbs/en/team/"/>
+  </url>
+  <url>
+    <loc>https://markoazr.github.io/symposium-cbs/es/registro/</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <i18n:link rel="alternate" hreflang="en" href="https://markoazr.github.io/symposium-cbs/en/register/"/>
+  </url>
+
+  <!-- English Pages -->
+  <url>
+    <loc>https://markoazr.github.io/symposium-cbs/en/</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <i18n:link rel="alternate" hreflang="es" href="https://markoazr.github.io/symposium-cbs/es/"/>
+  </url>
+  <url>
+    <loc>https://markoazr.github.io/symposium-cbs/en/program/</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <i18n:link rel="alternate" hreflang="es" href="https://markoazr.github.io/symposium-cbs/es/programa/"/>
+  </url>
+  <url>
+    <loc>https://markoazr.github.io/symposium-cbs/en/resources/</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <i18n:link rel="alternate" hreflang="es" href="https://markoazr.github.io/symposium-cbs/es/recursos/"/>
+  </url>
+  <url>
+    <loc>https://markoazr.github.io/symposium-cbs/en/team/</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <i18n:link rel="alternate" hreflang="es" href="https://markoazr.github.io/symposium-cbs/es/equipo/"/>
+  </url>
+  <url>
+    <loc>https://markoazr.github.io/symposium-cbs/en/register/</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <i18n:link rel="alternate" hreflang="es" href="https://markoazr.github.io/symposium-cbs/es/registro/"/>
+  </url>
+</urlset>

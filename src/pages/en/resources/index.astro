@@ -1,0 +1,169 @@
+---
+import MainLayout from "~/layouts/MainLayout.astro";
+import ResourceCard from "~/components/ResourceCard.astro";
+import AccordionFAQ from "~/components/AccordionFAQ.astro";
+---
+
+<MainLayout
+  title="Resources | CBS Symposium 2026"
+  description="Resources for speakers and participants"
+  currentPage="resources"
+  lang="en"
+>
+  <!-- Header -->
+  <header
+    class="bg-gradient-to-r from-blue-600 to-blue-900 dark:from-blue-900 dark:to-blue-800 text-white py-20 px-4 relative overflow-hidden"
+  >
+    <div
+      class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"
+    >
+    </div>
+    <div
+      class="absolute -bottom-24 -right-24 w-96 h-96 bg-lime-500/20 rounded-full blur-3xl"
+    >
+    </div>
+    <div
+      class="absolute top-10 left-10 w-40 h-40 bg-cyan-500/20 rounded-full blur-2xl"
+    >
+    </div>
+    <div class="max-w-7xl mx-auto text-center relative z-10">
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+        Resources & Support
+      </h1>
+      <p class="text-blue-100 text-lg max-w-2xl mx-auto">
+        Everything you need to prepare for your presentation and answers to
+        common questions about the symposium.
+      </p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main
+    class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full space-y-20"
+  >
+    <!-- Speaker Resources Section -->
+    <section id="speaker-resources">
+      <div class="flex items-center gap-4 mb-8">
+        <span
+          class="bg-blue-100 dark:bg-blue-900/50 p-3 rounded-full text-blue-600 dark:text-blue-300"
+        >
+          <span class="material-icons-outlined text-2xl">mic_external_on</span>
+        </span>
+        <div>
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white">
+            Speaker Resources
+          </h2>
+          <p class="text-slate-500 dark:text-slate-400 mt-1">
+            Essential tools and guidelines for presenters.
+          </p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <ResourceCard
+          title="Presenters Guide"
+          description="Summary of the International Synthetic Biology Symposium project. Essential document to understand the context and objectives of the event."
+          icon="description"
+          iconBg="bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400"
+          links={[
+            {
+              label: "Download Guide (PDF)",
+              href: "/symposium-cbs/docs/guide_symposium.pdf",
+              format: "pdf",
+            },
+          ]}
+        />
+        <ResourceCard
+          title="Technical Requirements"
+          description="Ensure a smooth presentation by checking your setup against our platform requirements."
+          icon="settings_ethernet"
+          iconBg="bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400"
+          features={[
+            "Stable internet connection (min 10 Mbps)",
+            "Latest version of Zoom or Google Chrome",
+            "Functional webcam and microphone headset",
+          ]}
+        />
+        <ResourceCard
+          title="Presentation Format"
+          description="Specifications and recommended structure for your presentation at the symposium."
+          icon="event_note"
+          iconBg="bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400"
+          features={[
+            "Presentation: 30-40 minutes",
+            "Questions & Answers: 20 minutes",
+            "Total duration: 50-60 minutes",
+          ]}
+        />
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="border-t border-slate-200 dark:border-slate-700"></div>
+
+    <!-- FAQ Section -->
+    <section class="max-w-4xl mx-auto w-full" id="faq">
+      <div class="text-center mb-10">
+        <span
+          class="text-lime-500 font-semibold tracking-wider text-sm uppercase"
+          >Support</span
+        >
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-2">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-slate-500 dark:text-slate-400 mt-2">
+          Find quick answers to common questions about the symposium.
+        </p>
+      </div>
+
+      <AccordionFAQ
+        items={[
+          {
+            id: 1,
+            question: "How do I register for the symposium?",
+            answer:
+              'Registration is handled through our main portal. Click the "Register Now" button in the top navigation bar. We offer student, academic, and industry tiers. Early bird pricing ends on September 30th.',
+          },
+          {
+            id: 2,
+            question: "When will certificates be issued?",
+            answer:
+              "Certificates of attendance will be emailed to all registered participants within 7 business days after the conclusion of the event. Speakers will receive a separate certificate acknowledging their contribution.",
+          },
+          {
+            id: 3,
+            question: "Will sessions be recorded?",
+            answer:
+              "Yes, all keynote sessions and panel discussions will be recorded. Registered attendees will have access to the recordings for 6 months via the symposium portal starting one week after the event.",
+          },
+          {
+            id: 4,
+            question: "Is there financial aid available for students?",
+            answer:
+              'We offer a limited number of scholarships covering registration fees for undergraduate students. Please visit the "Scholarships" page under the "About" menu to apply before October 1st.',
+          },
+          {
+            id: 5,
+            question: "What is the event format?",
+            answer:
+              "It is a hybrid event: you can participate in-person in Lima or virtually from anywhere in the world. Both options have full access to all sessions.",
+          },
+        ]}
+      />
+
+      <div
+        class="mt-8 text-center bg-blue-50 dark:bg-slate-800 p-6 rounded-lg border border-blue-100 dark:border-slate-700"
+      >
+        <p class="text-slate-700 dark:text-slate-300 font-medium mb-3">
+          Still have questions?
+        </p>
+        <a
+          href="mailto:cbs.unmsm@gmail.com"
+          class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white transition-all bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 dark:bg-blue-700 dark:hover:bg-blue-800"
+        >
+          <span class="material-icons-outlined text-sm mr-2">email</span>
+          Contact Support
+        </a>
+      </div>
+    </section>
+  </main>
+</MainLayout>

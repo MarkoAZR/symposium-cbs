@@ -1,0 +1,9 @@
+# Robots file for CBS Symposium 2026
+User-agent: *
+Allow: /
+Allow: /symposium-cbs/
+
+Disallow: /.astro/
+Disallow: /node_modules/
+
+Sitemap: https://markoazr.github.io/symposium-cbs/sitemap.xml

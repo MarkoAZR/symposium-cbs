@@ -1,0 +1,87 @@
+---
+interface Tab {
+  id: string;
+  label: string;
+  icon?: string;
+  subtitle?: string;
+}
+
+interface Props {
+  tabs: Tab[];
+  lang?: 'es' | 'en';
+}
+
+const { tabs, lang = 'es' } = Astro.props;
+---
+
+<div class="flex flex-col md:flex-row justify-center gap-4 mb-12 flex-wrap" id="program-tabs">
+  {tabs.map((tab) => (
+    <button 
+      class={`day-tab group relative flex items-center justify-center gap-3 px-8 py-4 rounded-xl border-2 transition-all duration-300 w-full md:w-auto shadow-sm hover:shadow-md ${
+        tab.id === tabs[0].id 
+          ? 'active bg-blue-600 dark:bg-cyan-600 text-white border-blue-600 dark:border-cyan-600' 
+          : 'bg-white dark:bg-slate-800 border-transparent hover:border-slate-200 dark:hover:border-slate-700 text-slate-600 dark:text-slate-300'
+      }`}
+      id={`tab-${tab.id}`}
+      onclick={`switchTab('${tab.id}')`}
+    >
+      <div class="flex flex-col items-start text-left">
+        {tab.subtitle && <span class="text-xs font-bold uppercase tracking-wider opacity-70">{tab.subtitle}</span>}
+        <span class="font-display font-bold text-lg">{tab.label}</span>
+      </div>
+      {tab.icon && <span class="material-icons ml-auto md:ml-2 opacity-50 group-hover:opacity-100">{tab.icon}</span>}
+    </button>
+  ))}
+</div>
+
+<script define:vars={{ tabs, lang }}>
+  function switchTab(day) {
+    // Hide all content
+    tabs.forEach(t => {
+      const content = document.getElementById(`content-${t.id}`);
+      const tab = document.getElementById(`tab-${t.id}`);
+      if (content) {
+        content.classList.add('hidden');
+        content.classList.remove('animate-fade-in');
+      }
+      if (tab) {
+        tab.classList.remove('active', 'bg-blue-600', 'dark:bg-cyan-600', 'text-white', 'border-blue-600', 'dark:border-cyan-600');
+        tab.classList.add('bg-white', 'dark:bg-slate-800', 'border-transparent', 'text-slate-600', 'dark:text-slate-300');
+      }
+    });
+
+    // Show selected content
+    const selectedContent = document.getElementById(`content-${day}`);
+    const selectedTab = document.getElementById(`tab-${day}`);
+    
+    if (selectedContent) {
+      selectedContent.classList.remove('hidden');
+      selectedContent.classList.add('animate-fade-in');
+    }
+    
+    if (selectedTab) {
+      selectedTab.classList.add('active', 'bg-blue-600', 'dark:bg-cyan-600', 'text-white', 'border-blue-600', 'dark:border-cyan-600');
+      selectedTab.classList.remove('bg-white', 'dark:bg-slate-800', 'border-transparent', 'text-slate-600', 'dark:text-slate-300');
+    }
+  }
+
+  // Ensure global switchTab function exists
+  window.switchTab = switchTab;
+</script>
+
+<style>
+  @keyframes fadeIn {
+    from { 
+      opacity: 0; 
+      transform: translateY(10px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+</style>

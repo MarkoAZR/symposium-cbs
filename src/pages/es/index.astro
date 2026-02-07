@@ -1,0 +1,159 @@
+---
+import MainLayout from "~/layouts/MainLayout.astro";
+import HeroSection from "~/components/HeroSection.astro";
+import Card from "~/components/Card.astro";
+---
+
+<MainLayout
+  title="Inicio | Simposio CBS 2026"
+  description="Simposio Internacional de Biología Sintética en Lima, Perú"
+  currentPage="home"
+  lang="es"
+>
+  <HeroSection
+    title="I Simposio Virtual Internacional de Biología Sintética"
+    subtitle="Únete al primer Simposio Internacional de Biología Sintética Virtual organizado por la CBS-UNMSM. Conéctate con líderes mundiales, investigadores y entusiastas de SynBio."
+    ctaText="Registrate Ahora"
+    ctaHref="https://forms.gle/zA5YgBBibK291sxz7"
+    backgroundImage="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&h=600&fit=crop"
+    showStats={true}
+  />
+
+  <!-- Sección Acerca de -->
+  <section
+    id="about"
+    class="py-24 bg-white dark:bg-slate-950 relative overflow-hidden"
+  >
+    <div
+      class="absolute top-0 left-0 w-96 h-96 bg-blue-100 dark:bg-blue-900/20 rounded-full filter blur-3xl -translate-x-1/2 -translate-y-1/2"
+    >
+    </div>
+    <div
+      class="absolute bottom-0 right-0 w-96 h-96 bg-lime-100 dark:bg-lime-900/20 rounded-full filter blur-3xl translate-x-1/4 translate-y-1/4"
+    >
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16">
+        <h2
+          class="font-display font-bold text-4xl md:text-5xl text-slate-900 dark:text-white mb-4"
+        >
+          Acerca del Simposio
+        </h2>
+        <div
+          class="w-24 h-1 bg-gradient-to-r from-blue-600 via-lime-500 to-cyan-500 mx-auto rounded-full"
+        >
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-8">
+          <div>
+            <h3
+              class="font-display font-bold text-2xl text-slate-900 dark:text-white mb-4"
+            >
+              Bienvenido a la Comunidad <span
+                class="text-blue-600 dark:text-blue-400">CBS-UNMSM</span
+              >
+            </h3>
+            <p
+              class="text-slate-700 dark:text-slate-300 leading-relaxed text-lg"
+            >
+              La Comunidad de Biología Sintética (CBS-UNMSM) es una organización
+              liderada por estudiantes dedicada a promover y democratizar la
+              biología sintética en Lima, Perú y Latinoamérica. Nuestra visión
+              es integrar a estudiantes a esta prometedora área científica.
+            </p>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-6">
+            <Card
+              title="Educación"
+              description="Gestionando talleres y foros de discusión para difundir el conocimiento de la biología sintética."
+              icon="science"
+            />
+            <Card
+              title="Colaboración"
+              description="Fomentando asociaciones interdisciplinarias entre instituciones latinoamericanas."
+              icon="groups"
+            />
+          </div>
+
+          <blockquote
+            class="text-slate-700 dark:text-slate-300 italic border-l-4 border-lime-500 pl-4"
+          >
+            "Nuestro objetivo es inspirar a la próxima generación de
+            bio-ingenieros para resolver problemas locales con tecnologías
+            globales. Ciencia que se diseña, conocimiento que se comparte"
+          </blockquote>
+        </div>
+
+        <div class="relative">
+          <div
+            class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800"
+          >
+            <img
+              alt="Estudiantes de biología en laboratorio colaborando"
+              class="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
+              src="/public/images/fondo.jpg"
+            />
+            <div
+              class="absolute bottom-6 left-6 bg-white/90 dark:bg-slate-900/90 backdrop-blur p-4 rounded-lg shadow-lg max-w-xs hidden sm:block"
+            >
+              <div class="flex items-center gap-3">
+                <div
+                  class="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded"
+                >
+                  NOV. 2025
+                </div>
+                <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                  Ciclo de foros SynBio
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute -z-10 top-10 -right-10 w-full h-full border-2 border-dashed border-blue-300/50 dark:border-blue-700/50 rounded-2xl"
+          >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Events Section -->
+  <section class="py-24 bg-slate-50 dark:bg-slate-900 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16">
+        <h2
+          class="font-display font-bold text-4xl md:text-5xl text-slate-900 dark:text-white mb-4"
+        >
+          Eventos Destacados
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 text-lg">
+          Conoce nuestras actividades pasadas y conoce más acerca de nuestro
+          trabajo
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <Card
+          variant="featured"
+          title="I Simposio Internacional 2026"
+          description="Primera edición del simposio internacional de biología sintética para la región LATAM, con ponentes de mas de 7 países."
+          tags={["Internacional", "Marzo 2026", "Lima"]}
+          href="https://forms.gle/SFUEG1PndfRVxZhR6"
+          icon="event"
+        />
+        <Card
+          variant="featured"
+          title="Ciclo de foros de discusión abierta 2025"
+          description="Ponencias abiertas al público tipo Journal Club sobre temas actuales en biología sintética. Dirigido a nuestra comunidad y público en general."
+          tags={["Workshop", "Noviembre 2025", "Presencial"]}
+          href="https://www.facebook.com/share/p/17kHoRM3LB/"
+          icon="school"
+        />
+      </div>
+    </div>
+  </section>
+</MainLayout>

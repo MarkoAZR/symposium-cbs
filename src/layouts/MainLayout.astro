@@ -1,0 +1,112 @@
+---
+import "~/styles/global.css";
+import Navbar from "~/components/Navbar.astro";
+import Footer from "~/components/Footer.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  currentPage?: string;
+  lang?: string;
+  image?: string;
+  url?: string;
+}
+
+const {
+  title,
+  description = "Simposio CBS 2026 - I Simposio Internacional Virtual de Biología Sintética",
+  currentPage,
+  lang = "es",
+  image = "/symposium-cbs/images/logos/cbs_logo.png",
+  url = "https://cbs-unmsm.org/symposium-cbs",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title} | CBS-UNMSM</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/symposium-cbs/favicon.svg" />
+    <link rel="shortcut icon" type="image/x-icon" href="/symposium-cbs/favicon.ico" />
+    <link rel="apple-touch-icon" href="/symposium-cbs/images/logos/cbs_logo.png" />
+    <link rel="manifest" href="/symposium-cbs/manifest.json" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0EA5E9" />
+    <meta name="msapplication-TileColor" content="#0EA5E9" />
+
+    <!-- OpenGraph Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:site_name" content="CBS Symposium 2026" />
+    <meta property="og:locale" content={lang === "en" ? "en_US" : "es_PE"} />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={url} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Preconnect Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Material Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+  </head>
+  </head>
+  <body
+    class="bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-50 transition-colors duration-300"
+  >
+    <Navbar currentPage={currentPage} lang={lang} />
+    <main>
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>
+
+<script>
+  // Dark mode toggle logic
+  const html = document.documentElement;
+  const themeToggle = document.getElementById("theme-toggle");
+
+  // Initialize theme
+  if (localStorage.getItem("theme") === "dark") {
+    html.classList.add("dark");
+  } else if (
+    !localStorage.getItem("theme") &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
+    html.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+  }
+
+  // Toggle theme
+  themeToggle?.addEventListener("click", () => {
+    html.classList.toggle("dark");
+    localStorage.setItem(
+      "theme",
+      html.classList.contains("dark") ? "dark" : "light",
+    );
+  });
+</script>

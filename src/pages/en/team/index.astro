@@ -1,0 +1,278 @@
+---
+import MainLayout from "~/layouts/MainLayout.astro";
+import TeamMemberCard from "~/components/TeamMemberCard.astro";
+---
+
+<MainLayout
+  title="Team | CBS Symposium 2026"
+  description="Meet the symposium team"
+  currentPage="team"
+  lang="en"
+>
+  <!-- Header -->
+  <header class="relative overflow-hidden py-20 sm:py-24">
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-blue-50 to-lime-50 dark:from-slate-900 dark:to-slate-900 opacity-50 -z-10"
+    >
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1
+        class="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4"
+      >
+        Our <span class="text-blue-600">Team</span>
+      </h1>
+      <p
+        class="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
+      >
+        The brilliant minds behind the first Synthetic Biology Symposium at San
+        Marcos. Students, leaders, and visionaries united by science.
+      </p>
+    </div>
+  </header>
+
+  <!-- Team Section -->
+  <section class="py-16 bg-white dark:bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <TeamMemberCard
+          name="Marko Zapata"
+          role="President and Logistics Coordinator"
+          department="Genetics and Biotechnology, UNMSM"
+          image="/public/images/team/Marko_zapata.jpg"
+          links={[
+            { icon: "link", href: "https://www.linkedin.com/in/marko-zapata/" },
+            { icon: "mail", href: "mailto:marko.zapata@unmsm.edu.pe" },
+          ]}
+        />
+        <TeamMemberCard
+          name="Valery Velasquez"
+          role="General Coordinator"
+          department="Genetics and Biotechnology, UNMSM"
+          image="/public/images/team/Valery_Velasquez.jpg"
+          links={[
+            { icon: "link", href: "#" },
+            { icon: "mail", href: "mailto:valery.velasquez@unmsm.edu.pe" },
+          ]}
+        />
+        <TeamMemberCard
+          name="Rodrigo Puertas"
+          role="Academic Coordinator"
+          department="Genetics and Biotechnology, UNMSM"
+          image="/public/images/team/Rodrigo_Puertas.png"
+          links={[
+            { icon: "link", href: "#" },
+            { icon: "mail", href: "mailto:rodrigo.puertas@unmsm.edu.pe" },
+          ]}
+        />
+        <TeamMemberCard
+          name="Sneyder Boada"
+          role="Marketing and Communications Coordinator"
+          department="Genetics and Biotechnology, UNMSM"
+          image="/public/images/team/sneyder_boada.jpeg"
+          links={[
+            { icon: "link", href: "#" },
+            { icon: "mail", href: "mailto:sb71013216@gmail.com" },
+          ]}
+        />
+        <TeamMemberCard
+          name="Jorja Lavado"
+          role="Marketing and Design"
+          department="Social Communication, UNMSM"
+          image="/public/images/team/Jorja_lavado.png"
+          links={[
+            { icon: "link", href: "#" },
+            { icon: "mail", href: "mailto:sofia@cbs-unmsm.com" },
+          ]}
+        />
+        <TeamMemberCard
+          name="Adriana Ordinola"
+          role="Marketing and Design"
+          department="Genetics and Biotechnology, UNMSM"
+          image="/public/images/team/Adriana_Ordinola.jpg"
+          links={[
+            { icon: "link", href: "#" },
+            { icon: "mail", href: "mailto:adriana.ordinolam@unmsm.edu.pe" },
+          ]}
+        />
+        <TeamMemberCard
+          name="Mijael Espinoza"
+          role="Academic Coordination"
+          department="Genetics and Biotechnology, UNMSM"
+          image="/public/images/team/Mijael_Espinoza.jpg"
+          links={[
+            { icon: "link", href: "#" },
+            { icon: "mail", href: "mailto:mijaelleo123456789@gmail.com" },
+          ]}
+        />
+        <TeamMemberCard
+          name="Gerardo Noriega"
+          role="Logistics Coordination"
+          department="Genetics and Biotechnology, UNMSM"
+          image="/public/images/team/Gerardo.jpeg"
+          links={[
+            { icon: "link", href: "#" },
+            { icon: "mail", href: "mailto:gerardo.noriega@unmsm.edu.pe" },
+          ]}
+        />
+        <TeamMemberCard
+          name="Daniela Rojas"
+          role="Logistics Coordination"
+          department="Genetics and Biotechnology, UNMSM"
+          image="/public/images/team/daniela_rojas.jpg"
+          links={[
+            { icon: "link", href: "#" },
+            { icon: "mail", href: "mailto:daniela.rojas2@unmsm.edu.pe" },
+          ]}
+        />
+        <TeamMemberCard
+          name="Nadia Vera Munarriz"
+          role="Responsible Teacher and Academic Advisor"
+          department="Ms. Researcher, UNMSM"
+          image="/public/images/team/nadia_vera.jpeg"
+          links={[
+            { icon: "link", href: "#" },
+            { icon: "mail", href: "mailto:nadia.vera@unmsm.edu.pe" },
+          ]}
+        />
+        <TeamMemberCard
+          name="Benjamín Díaz"
+          role="Academic Advisor and Mentor"
+          department="Bsc. Researcher in Synbio, FCB-UNMSM"
+          image="/public/images/team/Benjamin_Diaz.jpg"
+          links={[
+            { icon: "link", href: "#" },
+            { icon: "mail", href: "mailto:benjamin.diaz@unmsm.edu.pe" },
+          ]}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Institutional Support -->
+  <section
+    class="py-16 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2
+          class="text-3xl font-bold text-slate-900 dark:text-white mb-3 relative inline-block"
+        >
+          Institutional Support
+          <span
+            class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-blue-600 rounded"
+          ></span>
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 mt-6">
+          Institutions that support and endorse the symposium
+        </p>
+      </div>
+
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+        <!-- Institutional Logo Container 1 -->
+        <div
+          class="w-48 h-24 bg-white dark:bg-slate-800 rounded-lg flex items-center justify-center p-4 shadow-sm hover:shadow-md transition-shadow"
+        >
+          <img
+            src="/public/images/logos/institutional/unmsm.png"
+            alt="UNMSM - Faculty of Biological Sciences"
+            class="h-full object-contain grayscale hover:grayscale-0 transition-all"
+          />
+        </div>
+
+        <!-- Institutional Logo Container 2 -->
+        <div
+          class="w-48 h-24 bg-white dark:bg-slate-800 rounded-lg flex items-center justify-center p-4 shadow-sm hover:shadow-md transition-shadow"
+        >
+          <img
+            src="/public/images/logos/institutional/cbs.png"
+            alt="CBS - Synthetic Biology Symposium"
+            class="h-full object-contain grayscale hover:grayscale-0 transition-all"
+          />
+        </div>
+
+        <!-- Add more institutional logos here as needed -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Allies & Sponsors Section -->
+  <section
+    class="py-16 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-3 relative inline-block"
+        >
+          Partners & Sponsors
+          <span
+            class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-lime-500 rounded"
+          ></span>
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 mt-6 max-w-2xl mx-auto">
+          Organizations and institutions that accompany us in this initiative
+          for research and dissemination of synthetic biology
+        </p>
+      </div>
+
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+        <!-- Confirmed Sponsor/Ally 1 -->
+        <div
+          class="w-56 h-28 bg-slate-50 dark:bg-slate-800 rounded-lg flex items-center justify-center p-4 shadow-sm hover:shadow-lg transition-all border border-slate-200 dark:border-slate-700"
+        >
+          <img
+            src="/public/images/logos/sponsors/aliado-1.png"
+            alt="Partner Name"
+            class="h-full object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+          />
+        </div>
+
+        <!-- Placeholder for future sponsors -->
+        <div
+          class="w-56 h-28 bg-slate-100 dark:bg-slate-700 rounded-lg flex items-center justify-center p-4 border-2 border-dashed border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400"
+        >
+          <div class="text-center">
+            <span class="material-icons text-4xl mb-2 block opacity-50"
+              >add_circle_outline</span
+            >
+            <p class="text-sm font-medium">Next partner</p>
+          </div>
+        </div>
+
+        <!-- Placeholder for future sponsors -->
+        <div
+          class="w-56 h-28 bg-slate-100 dark:bg-slate-700 rounded-lg flex items-center justify-center p-4 border-2 border-dashed border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400"
+        >
+          <div class="text-center">
+            <span class="material-icons text-4xl mb-2 block opacity-50"
+              >add_circle_outline</span
+            >
+            <p class="text-sm font-medium">Next partner</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section
+    class="py-16 bg-blue-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">
+        Want to become our sponsor?
+      </h2>
+      <p class="text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
+        Join leading institutions in supporting synthetic biology research
+        across Latin America.
+      </p>
+      <a
+        href="mailto:cbs.unmsm@gmail.com?subject=Sponsorship Interest"
+        class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-slate-50 dark:bg-slate-800 dark:text-blue-400 dark:hover:bg-slate-700 transition-colors shadow-sm"
+      >
+        Contact for Sponsorship
+        <span class="material-icons ml-2 text-lg">arrow_forward</span>
+      </a>
+    </div>
+  </section>
+</MainLayout>

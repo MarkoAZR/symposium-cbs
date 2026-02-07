@@ -1,0 +1,339 @@
+---
+import MainLayout from "~/layouts/MainLayout.astro";
+---
+
+<MainLayout
+  title="Programa | Simposio CBS 2026"
+  description="Conoce el programa completo del simposio"
+  currentPage="program"
+  lang="es"
+>
+  <!-- Header -->
+  <header
+    class="pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center"
+  >
+    <div
+      class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm font-semibold mb-6 border border-blue-100 dark:border-blue-800"
+    >
+      <span class="w-2 h-2 rounded-full bg-lime-500 animate-pulse"></span>
+      Evento en Vivo: 5-7 de Marzo de 2026
+    </div>
+    <h1
+      class="text-4xl md:text-6xl font-display font-bold mb-6 tracking-tight text-slate-900 dark:text-white"
+    >
+      I Simposio Virtual <br class="hidden md:block" />
+      <span
+        class="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent"
+        >Biología Sintética by CBS 2026</span
+      >
+    </h1>
+    <p
+      class="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed"
+    >
+      Únete a las mentes líderes en biología sintética en Latinoamérica para
+      tres días de investigación de vanguardia, colaboración e innovación de la
+      educación científica en UNMSM.
+    </p>
+  </header>
+
+  <!-- Días Temáticos Section -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+    <!-- Días Temáticos -->
+    <section class="mb-20">
+      <div class="text-center mb-12">
+        <h2
+          class="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white mb-4"
+        >
+          Días Temáticos
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400">
+          Conoce los tres ejes principales del simposio
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Día 1 -->
+        <div
+          class="group rounded-2xl border border-blue-200 dark:border-blue-900/50 bg-gradient-to-br from-blue-50 to-blue-50/50 dark:from-blue-900/20 dark:to-blue-900/10 p-8 hover:shadow-lg hover:border-blue-400 dark:hover:border-blue-700 transition-all duration-300 cursor-pointer"
+        >
+          <div class="flex items-center gap-3 mb-4">
+            <span
+              class="material-icons text-3xl text-blue-600 dark:text-blue-400"
+              >public</span
+            >
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
+                Día 01
+              </h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400">
+                5 de Marzo
+              </p>
+            </div>
+          </div>
+          <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-3">
+            Fronteras globales
+          </h4>
+          <p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+            Explorando la perspectiva internacional: últimas tendencias en
+            biología sintética y colaboraciones globales.
+          </p>
+          <div
+            class="mt-4 pt-4 border-t border-blue-200 dark:border-blue-900/30"
+          >
+            <p class="text-xs text-blue-600 dark:text-blue-400 font-semibold">
+              Sesiones en inglés
+            </p>
+          </div>
+        </div>
+
+        <!-- Día 2 -->
+        <div
+          class="group rounded-2xl border border-red-200 dark:border-red-900/50 bg-gradient-to-br from-red-50 to-red-50/50 dark:from-red-900/20 dark:to-red-900/10 p-8 hover:shadow-lg hover:border-red-400 dark:hover:border-red-700 transition-all duration-300 cursor-pointer"
+        >
+          <div class="flex items-center gap-3 mb-4">
+            <span class="material-icons text-3xl text-red-600 dark:text-red-400"
+              >flag</span
+            >
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
+                Día 02
+              </h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400">
+                6 de Marzo
+              </p>
+            </div>
+          </div>
+          <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-3">
+            Hub de investigación en Perú
+          </h4>
+          <p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+            Enfoque en la investigación peruana: aprovechando recursos genéticos
+            únicos, soluciones locales a problemas globales, y oportunidades de
+            innovación en Perú.
+          </p>
+          <div class="mt-4 pt-4 border-t border-red-200 dark:border-red-900/30">
+            <p class="text-xs text-red-600 dark:text-red-400 font-semibold">
+              Sesiones en español
+            </p>
+          </div>
+        </div>
+
+        <!-- Día 3 -->
+        <div
+          class="group rounded-2xl border border-green-200 dark:border-green-900/50 bg-gradient-to-br from-green-50 to-green-50/50 dark:from-green-900/20 dark:to-green-900/10 p-8 hover:shadow-lg hover:border-green-400 dark:hover:border-green-700 transition-all duration-300 cursor-pointer"
+        >
+          <div class="flex items-center gap-3 mb-4">
+            <span
+              class="material-icons text-3xl text-green-600 dark:text-green-400"
+              >diversity_3</span
+            >
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
+                Día 03
+              </h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400">
+                7 de Marzo
+              </p>
+            </div>
+          </div>
+          <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-3">
+            Ecosistema regional (LatAm)
+          </h4>
+          <p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+            Uniendo a Latinoamérica: ecosistemas de innovación, colaboración
+            regional, infraestructura compartida y construcción de una red
+            unificada SynBio.
+          </p>
+          <div
+            class="mt-4 pt-4 border-t border-green-200 dark:border-green-900/30"
+          >
+            <p class="text-xs text-green-600 dark:text-green-400 font-semibold">
+              Sesiones en español
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cronograma Section (Reserved) -->
+    <section
+      class="mb-20 bg-gradient-to-br from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 rounded-3xl p-12 md:p-16 relative overflow-hidden"
+    >
+      <div
+        class="absolute -top-20 -right-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"
+      >
+      </div>
+      <div
+        class="absolute -bottom-20 -left-20 w-64 h-64 bg-lime-500/10 rounded-full blur-3xl"
+      >
+      </div>
+
+      <div class="relative z-10 text-center max-w-2xl mx-auto">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/20 border border-blue-400/30 mb-6"
+        >
+          <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+          <span class="text-blue-300 text-sm font-semibold">Próximamente</span>
+        </div>
+
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-4">
+          Cronograma Detallado
+        </h2>
+
+        <p class="text-slate-300 text-lg mb-8">
+          Estamos preparando el cronograma completo con horarios, speakers
+          confirmados y detalles de cada sesión. ¡Sé el primero en enterarte
+          cuando lo anunciemos!
+        </p>
+
+        <div class="flex items-center justify-center gap-6 pt-4">
+          <p class="text-slate-300 text-sm font-medium">Síguenos:</p>
+          <a
+            href="https://www.instagram.com/cbsunmsm/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-slate-300 hover:text-blue-400 transition-colors"
+            aria-label="Instagram"
+          >
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"
+              ><path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.322a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"
+              ></path></svg
+            >
+          </a>
+          <a
+            href="https://www.facebook.com/cbsunmsm"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-slate-300 hover:text-blue-400 transition-colors"
+            aria-label="Facebook"
+          >
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"
+              ><path
+                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+              ></path></svg
+            >
+          </a>
+          <a
+            href="https://www.linkedin.com/company/cbs-unmsm/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-slate-300 hover:text-blue-300 transition-colors"
+            aria-label="LinkedIn"
+          >
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"
+              ><path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"
+              ></path></svg
+            >
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conversatorios Section -->
+    <section>
+      <div class="text-center mb-12">
+        <h2
+          class="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white mb-4"
+        >
+          Conversatorios
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400">
+          Espacios de diálogo especializado y colaboración
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Conversatorio 1 -->
+        <div
+          class="bg-gradient-to-br from-blue-900 to-blue-600 dark:from-blue-800 dark:to-cyan-600 rounded-2xl p-8 shadow-lg text-white relative overflow-hidden group cursor-pointer hover:shadow-xl transition-all"
+        >
+          <div
+            class="absolute top-0 right-0 -mt-10 -mr-10 h-40 w-40 rounded-full bg-white opacity-5 group-hover:opacity-10 transition-opacity"
+          >
+          </div>
+
+          <div class="relative z-10">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="material-icons text-lime-400">forum</span>
+              <span
+                class="text-lime-400 font-bold uppercase tracking-wide text-xs"
+                >Conversatorio</span
+              >
+            </div>
+
+            <h3 class="text-2xl font-bold mb-4">
+              Liderazgo Estudiantil y el Poder de la Comunidad
+            </h3>
+
+            <p class="text-blue-100 mb-6 leading-relaxed">
+              Enfoque: Habilidades blandas, gestión de talento y el rol de las
+              comunidades en la formación del científico moderno.
+            </p>
+
+            <div class="flex flex-wrap gap-2 pt-4 border-t border-blue-400/30">
+              <span
+                class="inline-block px-3 py-1 bg-blue-500/30 rounded-full text-xs text-blue-200 font-medium"
+                >Comunidades estudiantiles</span
+              >
+              <span
+                class="inline-block px-3 py-1 bg-blue-500/30 rounded-full text-xs text-blue-200 font-medium"
+                >Networking</span
+              >
+              <span
+                class="inline-block px-3 py-1 bg-blue-500/30 rounded-full text-xs text-blue-200 font-medium"
+                >Pre-grado</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Conversatorio 2 -->
+        <div
+          class="bg-gradient-to-br from-green-900 to-green-600 dark:from-green-800 dark:to-emerald-500 rounded-2xl p-8 shadow-lg text-white relative overflow-hidden group cursor-pointer hover:shadow-xl transition-all"
+        >
+          <div
+            class="absolute top-0 right-0 -mt-10 -mr-10 h-40 w-40 rounded-full bg-white opacity-5 group-hover:opacity-10 transition-opacity"
+          >
+          </div>
+
+          <div class="relative z-10">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="material-icons text-lime-400">forum</span>
+              <span
+                class="text-lime-400 font-bold uppercase tracking-wide text-xs"
+                >Conversatorio</span
+              >
+            </div>
+
+            <h3 class="text-2xl font-bold mb-4">
+              Fronteras de la Biología Sintética en LATAM: Investigación,
+              Desarrollo Profesional y Posicionamiento Global
+            </h3>
+
+            <p class="text-green-100 mb-6 leading-relaxed">
+              Enfoque: Infraestructura, oportunidades de carrera, bioeconomía y
+              posicionamiento estratégico de la región.
+            </p>
+
+            <div class="flex flex-wrap gap-2 pt-4 border-t border-green-400/30">
+              <span
+                class="inline-block px-3 py-1 bg-green-500/30 rounded-full text-xs text-green-200 font-medium"
+                >Investigación</span
+              >
+              <span
+                class="inline-block px-3 py-1 bg-green-500/30 rounded-full text-xs text-green-200 font-medium"
+                >Egresados</span
+              >
+              <span
+                class="inline-block px-3 py-1 bg-green-500/30 rounded-full text-xs text-green-200 font-medium"
+                >Oportunidades de carrera</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</MainLayout>

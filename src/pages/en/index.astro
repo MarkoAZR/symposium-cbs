@@ -1,0 +1,158 @@
+---
+import MainLayout from "~/layouts/MainLayout.astro";
+import HeroSection from "~/components/HeroSection.astro";
+import Card from "~/components/Card.astro";
+---
+
+<MainLayout
+  title="Home | CBS Symposium 2026"
+  description="International Synthetic Biology Symposium in Lima, Peru"
+  currentPage="home"
+  lang="en"
+>
+  <HeroSection
+    title="I International Virtual Symposium on Synthetic Biology"
+    subtitle="Join the first International Virtual Synthetic Biology Symposium organized by CBS-UNMSM. Connect with world leaders, researchers and SynBio enthusiasts."
+    ctaText="Register Now"
+    ctaHref="/en/register"
+    backgroundImage="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&h=600&fit=crop"
+    showStats={true}
+  />
+
+  <!-- About Section -->
+  <section
+    id="about"
+    class="py-24 bg-white dark:bg-slate-950 relative overflow-hidden"
+  >
+    <div
+      class="absolute top-0 left-0 w-96 h-96 bg-blue-100 dark:bg-blue-900/20 rounded-full filter blur-3xl -translate-x-1/2 -translate-y-1/2"
+    >
+    </div>
+    <div
+      class="absolute bottom-0 right-0 w-96 h-96 bg-lime-100 dark:bg-lime-900/20 rounded-full filter blur-3xl translate-x-1/4 translate-y-1/4"
+    >
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16">
+        <h2
+          class="font-display font-bold text-4xl md:text-5xl text-slate-900 dark:text-white mb-4"
+        >
+          About the Symposium
+        </h2>
+        <div
+          class="w-24 h-1 bg-gradient-to-r from-blue-600 via-lime-500 to-cyan-500 mx-auto rounded-full"
+        >
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-8">
+          <div>
+            <h3
+              class="font-display font-bold text-2xl text-slate-900 dark:text-white mb-4"
+            >
+              Welcome to the <span class="text-blue-600 dark:text-blue-400"
+                >CBS-UNMSM</span
+              > Community
+            </h3>
+            <p
+              class="text-slate-700 dark:text-slate-300 leading-relaxed text-lg"
+            >
+              The Synthetic Biology Community (CBS-UNMSM) is a student-led
+              organization dedicated to promoting and democratizing synthetic
+              biology in Lima, Peru and Latin America. Our vision is to
+              integrate students into this promising scientific field.
+            </p>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-6">
+            <Card
+              title="Education"
+              description="Managing workshops and discussion forums to spread knowledge of synthetic biology."
+              icon="science"
+            />
+            <Card
+              title="Collaboration"
+              description="Fostering interdisciplinary partnerships between Latin American institutions."
+              icon="groups"
+            />
+          </div>
+
+          <blockquote
+            class="text-slate-700 dark:text-slate-300 italic border-l-4 border-lime-500 pl-4"
+          >
+            "Our goal is to inspire the next generation of bio-engineers to
+            solve local problems with global technologies. Science that is
+            designed, knowledge that is shared"
+          </blockquote>
+        </div>
+
+        <div class="relative">
+          <div
+            class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800"
+          >
+            <img
+              alt="Biology students in laboratory collaborating"
+              class="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
+              src="/public/images/fondo.jpg"
+            />
+            <div
+              class="absolute bottom-6 left-6 bg-white/90 dark:bg-slate-900/90 backdrop-blur p-4 rounded-lg shadow-lg max-w-xs hidden sm:block"
+            >
+              <div class="flex items-center gap-3">
+                <div
+                  class="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded"
+                >
+                  NOV. 2025
+                </div>
+                <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                  SynBio Forum Cycle
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute -z-10 top-10 -right-10 w-full h-full border-2 border-dashed border-blue-300/50 dark:border-blue-700/50 rounded-2xl"
+          >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Events Section -->
+  <section class="py-24 bg-slate-50 dark:bg-slate-900 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16">
+        <h2
+          class="font-display font-bold text-4xl md:text-5xl text-slate-900 dark:text-white mb-4"
+        >
+          Featured Events
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 text-lg">
+          Discover our past activities and learn more about our work
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <Card
+          variant="featured"
+          title="I International Symposium 2026"
+          description="First edition of the international synthetic biology symposium for the LATAM region, with speakers from over 7 countries."
+          tags={["International", "March 2026", "Lima"]}
+          href="https://forms.gle/SFUEG1PndfRVxZhR6"
+          icon="event"
+        />
+        <Card
+          variant="featured"
+          title="Cycle of Open Discussion Forums 2025"
+          description="Public presentations type Journal Club on current topics in synthetic biology. Aimed at our community and the general public."
+          tags={["Workshop", "November 2025", "In-person"]}
+          href="https://www.facebook.com/share/p/17kHoRM3LB/"
+          icon="school"
+        />
+      </div>
+    </div>
+  </section>
+</MainLayout>

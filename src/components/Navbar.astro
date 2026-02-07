@@ -1,0 +1,214 @@
+---
+interface Props {
+  currentPage?: string;
+  lang?: string;
+}
+
+const { currentPage = "home", lang = "es" } = Astro.props;
+
+const navItems =
+  lang === "es"
+    ? [
+        { href: "/symposium-cbs/es/", label: "Inicio", id: "home" },
+        {
+          href: "/symposium-cbs/es/programa/",
+          label: "Programa",
+          id: "program",
+        },
+        {
+          href: "/symposium-cbs/es/recursos/",
+          label: "Recursos",
+          id: "resources",
+        },
+        { href: "/symposium-cbs/es/equipo/", label: "Equipo", id: "team" },
+      ]
+    : [
+        { href: "/symposium-cbs/en/", label: "Home", id: "home" },
+        { href: "/symposium-cbs/en/program/", label: "Program", id: "program" },
+        {
+          href: "/symposium-cbs/en/resources/",
+          label: "Resources",
+          id: "resources",
+        },
+        { href: "/symposium-cbs/en/team/", label: "Team", id: "team" },
+      ];
+
+const ctaText = lang === "es" ? "Registrate" : "Register";
+const ctaHref =
+  lang === "es"
+    ? "https://forms.gle/zA5YgBBibK291sxz7"
+    : "/symposium-cbs/en/register/";
+---
+
+<nav
+  class="sticky top-0 z-50 w-full bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800 transition-colors duration-300"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <!-- Logo -->
+      <a
+        href={lang === "es" ? "/symposium-cbs/es/" : "/symposium-cbs/en/"}
+        class="flex-shrink-0 flex items-center gap-3 hover:opacity-80 transition-opacity max-w-[60%] sm:max-w-none"
+      >
+        <div
+          class="h-12 w-12 flex-shrink-0 rounded-full overflow-hidden border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-[#122240]"
+        >
+          <img
+            src="/public/cbs_logo.svg"
+            alt="Logo CBS"
+            class="h-full w-full object-contain scale-125 transition-transform"
+            loading="eager"
+          />
+        </div>
+
+        <div class="flex flex-col leading-tight">
+          <span
+            class="font-display font-bold text-lg md:text-xl tracking-tight text-primary-800 dark:text-white whitespace-nowrap"
+          >
+            I Simposio Internacional
+          </span>
+          <span
+            class="text-[10px] md:text-xs font-medium text-secondary-600 dark:text-secondary-400 uppercase tracking-widest"
+          >
+            Virtual de Biología Sintética
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-6 items-center">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class={`font-medium transition-colors ${
+                currentPage === item.id
+                  ? "text-primary-800 dark:text-white"
+                  : "text-neutral-600 dark:text-neutral-400 hover:text-secondary-600 dark:hover:text-secondary-400"
+              }`}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- CTA Button + Dark Mode + Language -->
+      <div class="hidden md:flex gap-4 items-center">
+        <a
+          href={ctaHref}
+          class="bg-primary-800 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-primary-900 transition-colors shadow-lg shadow-primary-800/20"
+        >
+          {ctaText}
+        </a>
+        <button
+          id="theme-toggle"
+          class="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+          aria-label="Toggle theme"
+        >
+          <span class="inline-block dark:hidden text-xl">🌙</span>
+          <span class="hidden dark:inline-block text-xl">☀️</span>
+        </button>
+        <a
+          href={lang === "es" ? "/symposium-cbs/en/" : "/symposium-cbs/es/"}
+          class="px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-sm font-medium transition-colors"
+        >
+          {lang === "es" ? "EN" : "ES"}
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex items-center gap-2">
+        <button
+          id="theme-toggle-mobile"
+          class="p-2 rounded-md text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+        >
+          <span class="inline-block dark:hidden">🌙</span>
+          <span class="hidden dark:inline-block">☀️</span>
+        </button>
+        <button
+          id="mobile-menu-toggle"
+          class="p-2 rounded-md text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+          aria-label="Menu"
+        >
+          <span class="material-icons">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div
+      id="mobile-menu"
+      class="md:hidden absolute top-20 left-0 right-0 bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-800 hidden"
+    >
+      <div class="px-4 py-4 space-y-3">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class={`block px-3 py-2 rounded-lg font-medium transition-colors ${
+                currentPage === item.id
+                  ? "text-primary-800 dark:text-white bg-primary-50 dark:bg-primary-900/20"
+                  : "text-neutral-600 dark:text-neutral-400 hover:text-secondary-600 dark:hover:text-secondary-400 hover:bg-neutral-50 dark:hover:bg-neutral-800/50"
+              }`}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+        <div
+          class="pt-3 border-t border-neutral-200 dark:border-neutral-800 space-y-3"
+        >
+          <a
+            href={ctaHref}
+            class="block px-3 py-2 bg-primary-800 text-white rounded-lg font-semibold hover:bg-primary-900 transition-colors text-center"
+          >
+            {ctaText}
+          </a>
+          <a
+            href={lang === "es" ? "/symposium-cbs/en/" : "/symposium-cbs/es/"}
+            class="block px-3 py-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-sm font-medium transition-colors text-center"
+          >
+            {lang === "es" ? "EN" : "ES"}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .active-link {
+    @apply text-primary-800 dark:text-white font-semibold;
+  }
+</style>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById("mobile-menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  mobileMenuBtn?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
+  });
+
+  // Close menu when a link is clicked
+  const mobileMenuLinks = mobileMenu?.querySelectorAll("a");
+  mobileMenuLinks?.forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu?.classList.add("hidden");
+    });
+  });
+
+  // Mobile theme toggle
+  const themeToggleMobile = document.getElementById("theme-toggle-mobile");
+  const html = document.documentElement;
+
+  themeToggleMobile?.addEventListener("click", () => {
+    html.classList.toggle("dark");
+    localStorage.setItem(
+      "theme",
+      html.classList.contains("dark") ? "dark" : "light",
+    );
+  });
+</script>

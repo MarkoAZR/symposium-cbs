@@ -1,0 +1,169 @@
+---
+import MainLayout from "~/layouts/MainLayout.astro";
+import ResourceCard from "~/components/ResourceCard.astro";
+import AccordionFAQ from "~/components/AccordionFAQ.astro";
+---
+
+<MainLayout
+  title="Recursos | Simposio CBS 2026"
+  description="Recursos para speakers y participantes"
+  currentPage="resources"
+  lang="es"
+>
+  <!-- Header -->
+  <header
+    class="bg-gradient-to-r from-blue-600 to-blue-900 dark:from-blue-900 dark:to-blue-800 text-white py-20 px-4 relative overflow-hidden"
+  >
+    <div
+      class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"
+    >
+    </div>
+    <div
+      class="absolute -bottom-24 -right-24 w-96 h-96 bg-lime-500/20 rounded-full blur-3xl"
+    >
+    </div>
+    <div
+      class="absolute top-10 left-10 w-40 h-40 bg-cyan-500/20 rounded-full blur-2xl"
+    >
+    </div>
+    <div class="max-w-7xl mx-auto text-center relative z-10">
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+        Recursos y Apoyo
+      </h1>
+      <p class="text-blue-100 text-lg max-w-2xl mx-auto">
+        Todo lo que necesitas para preparar tu presentación y respuestas a
+        preguntas frecuentes sobre el simposio.
+      </p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main
+    class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full space-y-20"
+  >
+    <!-- Speaker Resources Section -->
+    <section id="speaker-resources">
+      <div class="flex items-center gap-4 mb-8">
+        <span
+          class="bg-blue-100 dark:bg-blue-900/50 p-3 rounded-full text-blue-600 dark:text-blue-300"
+        >
+          <span class="material-icons-outlined text-2xl">mic_external_on</span>
+        </span>
+        <div>
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white">
+            Recursos para Speakers
+          </h2>
+          <p class="text-slate-500 dark:text-slate-400 mt-1">
+            Herramientas y directrices esenciales para presentadores.
+          </p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <ResourceCard
+          title="Guía para Ponentes"
+          description="Resumen del proyecto del Simposio Internacional de Biología Sintética. Documento esencial para conocer el contexto y objetivos del evento."
+          icon="description"
+          iconBg="bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400"
+          links={[
+            {
+              label: "Descargar Guía (PDF)",
+              href: "/symposium-cbs/docs/guide_simposio.pdf",
+              format: "pdf",
+            },
+          ]}
+        />
+        <ResourceCard
+          title="Requerimientos Técnicos"
+          description="Asegura una presentación sin problemas verificando tu configuración contra nuestros requisitos de plataforma."
+          icon="settings_ethernet"
+          iconBg="bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400"
+          features={[
+            "Conexión a Internet estable (idealmente por cable)",
+            "Última versión de Zoom o Google Chrome",
+            "Cámara web y micrófono auricular funcionales",
+          ]}
+        />
+        <ResourceCard
+          title="Formato de Presentación"
+          description="Especificaciones y estructura recomendada para tu presentación en el simposio."
+          icon="event_note"
+          iconBg="bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400"
+          features={[
+            "Presentación: 30-40 minutos",
+            "Preguntas y Respuestas: 20 minutos",
+            "Duración estimada: 50-60 minutos",
+          ]}
+        />
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="border-t border-slate-200 dark:border-slate-700"></div>
+
+    <!-- FAQ Section -->
+    <section class="max-w-4xl mx-auto w-full" id="faq">
+      <div class="text-center mb-10">
+        <span
+          class="text-lime-500 font-semibold tracking-wider text-sm uppercase"
+          >Soporte</span
+        >
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-2">
+          Preguntas Frecuentes
+        </h2>
+        <p class="text-slate-500 dark:text-slate-400 mt-2">
+          Encuentra respuestas rápidas a preguntas comunes sobre el simposio.
+        </p>
+      </div>
+
+      <AccordionFAQ
+        items={[
+          {
+            id: 1,
+            question: "¿Cómo me registro para el simposio?",
+            answer:
+              'El registro se maneja a través de nuestro portal principal o redes sociales. Haz clic en el botón "Registrarse" en la barra de navegación superior. El evento es virtual y gratuito.',
+          },
+          {
+            id: 2,
+            question: "¿Cuándo se entregarán los certificados?",
+            answer:
+              "Los certificados de asistencia se enviarán por correo electrónico a todos los participantes registrados y que hayan cumplido los requisitos de participación (asistencia de al menos el 80% a las sesiones). Serán contactados inmediatamente después de la conclusión del evento.",
+          },
+          {
+            id: 3,
+            question: "¿Se grabarán las sesiones?",
+            answer:
+              "Sí, todas las sesiones de ponentes y Conversatorios serán grabados. Los asistentes registrados tendrán acceso a las grabaciones durante 6 meses a través del correo electrónico del simposio comenzando una semana después del evento.",
+          },
+          {
+            id: 4,
+            question: "¿El certificado es gratuito?",
+            answer:
+              "No. Aunque el registro al evento es gratuito, el certificado de asistencia tiene un costo de S/.20 o $6 USD (dependiendo fluctuaciones puede variar). Será a nombre de la Universidad Nacional Mayor de San Marcos, y nuestro equipo se contactará contigo para el pago y envío del certificado después del evento.",
+          },
+          {
+            id: 5,
+            question: "¿Cuál es el formato del evento?",
+            answer:
+              "Es un evento totalmente virtual que se realizará a través de Zoom. Las sesiones de ponentes y Conversatorios se llevarán a cabo en vivo y serán grabadas. Se proporcionarán enlaces de acceso a los asistentes registrados antes del evento.",
+          },
+        ]}
+      />
+
+      <div
+        class="mt-8 text-center bg-blue-50 dark:bg-slate-800 p-6 rounded-lg border border-blue-100 dark:border-slate-700"
+      >
+        <p class="text-slate-700 dark:text-slate-300 font-medium mb-3">
+          ¿Aún tienes preguntas?
+        </p>
+        <a
+          href="mailto:cbs.unmsm@gmail.com"
+          class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white transition-all bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 dark:bg-blue-700 dark:hover:bg-blue-800"
+        >
+          <span class="material-icons-outlined text-sm mr-2">email</span>
+          Contactar Soporte
+        </a>
+      </div>
+    </section>
+  </main>
+</MainLayout>
