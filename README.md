@@ -128,7 +128,7 @@ git add .
 git commit -m "tu mensaje"
 
 # 2. Subir a GitHub
-git push origin main
+git push
 
 # 3. GitHub Actions automáticamente:
 #    - Compila el proyecto
