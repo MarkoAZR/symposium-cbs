@@ -2,9 +2,45 @@
 interface Props {
   currentPage?: string;
   lang?: string;
+  currentPath?: string;
 }
 
-const { currentPage = "home", lang = "es" } = Astro.props;
+const { currentPage = "home", lang = "es", currentPath = "" } = Astro.props;
+
+// Función para construir la URL del idioma alterno
+function getAlternateLanguagePath(path: string, currentLang: string): string {
+  // Mapeo de rutas español -> inglés
+  const routes: Record<string, Record<string, string>> = {
+    es: {
+      programa: "program",
+      recursos: "resources",
+      equipo: "team",
+      registro: "register",
+    },
+    en: {
+      program: "programa",
+      resources: "recursos",
+      team: "equipo",
+      register: "registro",
+    },
+  };
+
+  let newPath = path;
+
+  // Reemplazar el segmento de idioma
+  newPath = newPath.replace(
+    `/${currentLang}/`,
+    `/${currentLang === "es" ? "en" : "es"}/`,
+  );
+
+  // Reemplazar los segmentos de ruta
+  const routeMap = currentLang === "es" ? routes.es : routes.en;
+  Object.entries(routeMap).forEach(([oldSegment, newSegment]) => {
+    newPath = newPath.replace(`/${oldSegment}/`, `/${newSegment}/`);
+  });
+
+  return newPath || `/symposium-cbs/${currentLang === "es" ? "en" : "es"}/`;
+}
 
 const navItems =
   lang === "es"
@@ -37,7 +73,7 @@ const ctaText = lang === "es" ? "Registrate" : "Register";
 const ctaHref =
   lang === "es"
     ? "https://forms.gle/zA5YgBBibK291sxz7"
-    : "/symposium-cbs/en/register/";
+    : "https://forms.gle/SFUEG1PndfRVxZhR6";
 ---
 
 <nav
@@ -110,7 +146,7 @@ const ctaHref =
           <span class="hidden dark:inline-block text-xl">☀️</span>
         </button>
         <a
-          href={lang === "es" ? "/symposium-cbs/en/" : "/symposium-cbs/es/"}
+          href={getAlternateLanguagePath(currentPath, lang)}
           class="px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-sm font-medium transition-colors"
         >
           {lang === "es" ? "EN" : "ES"}
@@ -166,7 +202,7 @@ const ctaHref =
             {ctaText}
           </a>
           <a
-            href={lang === "es" ? "/symposium-cbs/en/" : "/symposium-cbs/es/"}
+            href={getAlternateLanguagePath(currentPath, lang)}
             class="block px-3 py-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-sm font-medium transition-colors text-center"
           >
             {lang === "es" ? "EN" : "ES"}

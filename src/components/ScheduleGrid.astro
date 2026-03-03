@@ -1,0 +1,695 @@
+---
+import type { DayColumn, SessionType } from "~/lib/scheduleData";
+
+interface Props {
+    days: DayColumn[];
+}
+
+const { days } = Astro.props;
+
+// Helper function to check if avatar is an image path
+function isImagePath(avatar: string): boolean {
+    return avatar.startsWith("/") || avatar.startsWith("http");
+}
+
+// Mapeo de estilos por tipo de sesión
+function getSessionStyles(type: SessionType): {
+    lightBg: string;
+    darkBg: string;
+    lightBorder: string;
+    darkBorder: string;
+    lightText: string;
+    darkText: string;
+    badge: string;
+    borderGlow: string;
+} {
+    switch (type) {
+        case "inaugural":
+            return {
+                lightBg: "bg-amber-50",
+                darkBg: "dark:bg-amber-950/20",
+                lightBorder: "border-l-amber-500",
+                darkBorder: "dark:border-l-amber-400",
+                lightText: "text-amber-700",
+                darkText: "dark:text-amber-300",
+                badge: "bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300",
+                borderGlow: "hover:shadow-[0_0_15px_rgba(217,119,6,0.3)]",
+            };
+        case "research_lecture":
+            return {
+                lightBg: "bg-blue-50",
+                darkBg: "dark:bg-blue-950/20",
+                lightBorder: "border-l-blue-500",
+                darkBorder: "dark:border-l-blue-400",
+                lightText: "text-blue-700",
+                darkText: "dark:text-blue-300",
+                badge: "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300",
+                borderGlow: "hover:shadow-[0_0_15px_rgba(59,130,246,0.3)]",
+            };
+        case "speed_talk":
+            return {
+                lightBg: "bg-cyan-50",
+                darkBg: "dark:bg-cyan-950/20",
+                lightBorder: "border-l-cyan-500",
+                darkBorder: "dark:border-l-cyan-400",
+                lightText: "text-cyan-700",
+                darkText: "dark:text-cyan-300",
+                badge: "bg-cyan-100 text-cyan-700 dark:bg-cyan-900/40 dark:text-cyan-300",
+                borderGlow: "hover:shadow-[0_0_15px_rgba(6,182,212,0.3)]",
+            };
+        case "conversatorio":
+            return {
+                lightBg: "bg-purple-50",
+                darkBg: "dark:bg-purple-950/20",
+                lightBorder: "border-l-purple-500",
+                darkBorder: "dark:border-l-purple-400",
+                lightText: "text-purple-700",
+                darkText: "dark:text-purple-300",
+                badge: "bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300",
+                borderGlow: "hover:shadow-[0_0_15px_rgba(147,51,234,0.3)]",
+            };
+        case "closing":
+            return {
+                lightBg: "bg-emerald-50",
+                darkBg: "dark:bg-emerald-950/20",
+                lightBorder: "border-l-emerald-500",
+                darkBorder: "dark:border-l-emerald-400",
+                lightText: "text-emerald-700",
+                darkText: "dark:text-emerald-300",
+                badge: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300",
+                borderGlow: "hover:shadow-[0_0_15px_rgba(16,185,129,0.3)]",
+            };
+        default:
+            return {
+                lightBg: "bg-slate-50",
+                darkBg: "dark:bg-slate-900/20",
+                lightBorder: "border-l-slate-400",
+                darkBorder: "dark:border-l-slate-600",
+                lightText: "text-slate-600",
+                darkText: "dark:text-slate-400",
+                badge: "bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300",
+                borderGlow: "",
+            };
+    }
+}
+
+function getTypeLabel(type: SessionType): string {
+    const labels: Record<SessionType, string> = {
+        inaugural: "INAUGURACIÓN",
+        research_lecture: "PONENCIA",
+        speed_talk: "SPEED TALK",
+        conversatorio: "CONVERSATORIO",
+        closing: "CLAUSURA",
+        break: "PAUSA",
+    };
+    return labels[type] || "SESIÓN";
+}
+---
+
+<div class="schedule-wrapper space-y-8">
+    {/* Tab Navigation */}
+    <div
+        class="flex gap-3 justify-center md:justify-start overflow-x-auto pb-2"
+    >
+        {
+            days.map((day, index) => (
+                <button
+                    class={`schedule-day-tab px-6 py-3 rounded-xl font-bold whitespace-nowrap transition-all duration-300 border-2 text-sm ${
+                        index === 0
+                            ? "bg-blue-600 dark:bg-blue-500 text-white border-blue-600 dark:border-blue-500"
+                            : "border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:border-blue-500 dark:hover:border-blue-400"
+                    }`}
+                    data-day-index={index}
+                >
+                    {day.dayName}
+                    <span class="ml-2 text-xs opacity-75">{day.date}</span>
+                </button>
+            ))
+        }
+    </div>
+
+    {/* Schedule Grid - Single Column Full Width */}
+    <div class="schedule-content">
+        {
+            days.map((day, dayIndex) => (
+                <div
+                    class={`day-column-wrapper schedule-day transition-all duration-300 ${dayIndex === 0 ? "block" : "hidden"}`}
+                    data-day-index={dayIndex}
+                >
+                    {/* Day Header Card */}
+                    <div
+                        class="day-header rounded-2xl p-8 text-white mb-8 border border-slate-200/20 dark:border-slate-700/30 backdrop-blur-sm"
+                        style={`background: linear-gradient(135deg, rgb(37, 99, 235) 0%, rgb(6, 182, 212) 100%)`}
+                    >
+                        <p class="text-xs font-bold uppercase tracking-wider opacity-90 mb-2">
+                            {dayIndex + 1 === 1
+                                ? "Día 1: Biología Sintética en el Mundo"
+                                : dayIndex + 1 === 2
+                                  ? "Día 2: Biología Sintética en Perú"
+                                  : "Día 3: Biología Sintética en LATAM"}
+                        </p>
+                        <h3 class="text-2xl md:text-3xl font-display font-bold mb-1">
+                            {day.dayName}
+                        </h3>
+                        <p class="text-sm opacity-90 font-mono">{day.date}</p>
+                    </div>
+
+                    {/* Sessions for this day */}
+                    <div class="space-y-4">
+                        {day.sessions.map((session) => {
+                            const styles = getSessionStyles(session.type);
+                            const isBreak = session.type === "break";
+
+                            return (
+                                <div
+                                    class={`session-card border-l-4 ${styles.lightBorder} ${styles.darkBorder} ${styles.lightBg} ${styles.darkBg} rounded-lg p-5 transition-all duration-300 ${styles.borderGlow} hover:scale-[1.02] group cursor-pointer space-y-3`}
+                                >
+                                    {/* Header: Icon, Time, Badge */}
+                                    <div class="flex items-start justify-between gap-2">
+                                        <div class="flex items-center gap-2 flex-1">
+                                            <span class="text-2xl">
+                                                {session.icon}
+                                            </span>
+                                            {!isBreak && (
+                                                <span
+                                                    class={`text-xs font-bold uppercase px-2 py-1 rounded-full ${styles.badge}`}
+                                                >
+                                                    {getTypeLabel(session.type)}
+                                                </span>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    {/* Time */}
+                                    <p class="text-xs font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/50 px-3 py-1 rounded-lg w-fit">
+                                        🕐 {session.time}
+                                    </p>
+
+                                    {/* Title */}
+                                    <h4
+                                        class={`font-display font-bold text-lg leading-tight ${styles.lightText} ${styles.darkText}`}
+                                    >
+                                        {session.title}
+                                    </h4>
+
+                                    {/* Subtitle (para eventos protocolares) */}
+                                    {session.subtitle && (
+                                        <p class="text-sm italic text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/30 px-3 py-2 rounded border border-slate-200 dark:border-slate-700/30">
+                                            ✨ {session.subtitle}
+                                        </p>
+                                    )}
+
+                                    {/* Drawing Badge (Clausura) */}
+                                    {session.hasDrawing && (
+                                        <div class="bg-amber-100 dark:bg-amber-900/30 border border-amber-300 dark:border-amber-700 text-amber-700 dark:text-amber-300 px-3 py-2 rounded font-bold text-sm">
+                                            🎁 SORTEO DE CERTIFICADOS
+                                        </div>
+                                    )}
+
+                                    {/* Program Description (Inaugural/Closing) */}
+                                    {(session.type === "inaugural" ||
+                                        session.type === "closing") &&
+                                        session.description && (
+                                            <div class="pt-3 border-t border-slate-200/50 dark:border-slate-700/30">
+                                                <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                                                    {session.description}
+                                                </p>
+                                            </div>
+                                        )}
+
+                                    {/* Main Speaker(s) */}
+                                    {session.speakers &&
+                                        session.speakers.length > 0 &&
+                                        !isBreak && (
+                                            <div class="space-y-3 pt-3 border-t border-slate-200/50 dark:border-slate-700/30">
+                                                <p class="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+                                                    {session.type ===
+                                                        "inaugural" ||
+                                                    session.type === "closing"
+                                                        ? "Responsables"
+                                                        : "Ponente" +
+                                                          (session.speakers
+                                                              .length > 1
+                                                              ? "s"
+                                                              : "")}
+                                                </p>
+                                                {session.speakers.map(
+                                                    (speaker) => (
+                                                        <div class="flex gap-3">
+                                                            {isImagePath(
+                                                                speaker.avatar,
+                                                            ) ? (
+                                                                <img
+                                                                    src={
+                                                                        speaker.avatar
+                                                                    }
+                                                                    alt={
+                                                                        speaker.name
+                                                                    }
+                                                                    class="w-10 h-10 rounded-full object-cover flex-shrink-0 shadow-md"
+                                                                />
+                                                            ) : (
+                                                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0 text-xs font-bold text-white shadow-md dark:from-blue-400 dark:to-cyan-400">
+                                                                    {
+                                                                        speaker.avatar
+                                                                    }
+                                                                </div>
+                                                            )}
+                                                            <div class="flex-grow">
+                                                                <div
+                                                                    class="bg-slate-50 dark:bg-slate-800/50 rounded p-3 cursor-pointer hover:shadow-md transition-shadow"
+                                                                    data-bio-name={
+                                                                        speaker.name
+                                                                    }
+                                                                    data-bio-role={
+                                                                        speaker.role
+                                                                    }
+                                                                    data-bio-text={
+                                                                        speaker.bio ||
+                                                                        ""
+                                                                    }
+                                                                >
+                                                                    <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">
+                                                                        {
+                                                                            speaker.name
+                                                                        }
+                                                                    </p>
+                                                                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">
+                                                                        {
+                                                                            speaker.role
+                                                                        }
+                                                                        {speaker.institution
+                                                                            ? ` • ${speaker.institution}`
+                                                                            : ""}
+                                                                    </p>
+                                                                    {speaker.bio && (
+                                                                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 line-clamp-3">
+                                                                            {
+                                                                                speaker.bio
+                                                                            }
+                                                                        </p>
+                                                                    )}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    ),
+                                                )}
+                                            </div>
+                                        )}
+
+                                    {/* Panelists (Conversatorios) - FIRST */}
+                                    {session.panelists &&
+                                        session.panelists.length > 0 &&
+                                        !isBreak && (
+                                            <div class="space-y-3 pt-3 border-t border-slate-200/50 dark:border-slate-700/30">
+                                                <p class="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+                                                    Panelistas (
+                                                    {session.panelists.length})
+                                                </p>
+                                                <div class="grid grid-cols-2 gap-3">
+                                                    {session.panelists.map(
+                                                        (panelist) => (
+                                                            <div class="flex gap-3">
+                                                                {isImagePath(
+                                                                    panelist.avatar,
+                                                                ) ? (
+                                                                    <img
+                                                                        src={
+                                                                            panelist.avatar
+                                                                        }
+                                                                        alt={
+                                                                            panelist.name
+                                                                        }
+                                                                        class="w-10 h-10 rounded-full object-cover flex-shrink-0 shadow-sm"
+                                                                    />
+                                                                ) : (
+                                                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-blue-500 flex items-center justify-center flex-shrink-0 text-xs font-bold text-white shadow-sm dark:from-emerald-400 dark:to-blue-400">
+                                                                        {
+                                                                            panelist.avatar
+                                                                        }
+                                                                    </div>
+                                                                )}
+                                                                <div class="flex-grow min-w-0">
+                                                                    <div
+                                                                        class="bg-slate-50 dark:bg-slate-800/50 rounded p-2 cursor-pointer hover:shadow-md transition-shadow"
+                                                                        data-bio-name={
+                                                                            panelist.name
+                                                                        }
+                                                                        data-bio-role={
+                                                                            panelist.role
+                                                                        }
+                                                                        data-bio-text={
+                                                                            panelist.bio ||
+                                                                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                                                                        }
+                                                                    >
+                                                                        <p class="text-xs font-semibold text-slate-900 dark:text-slate-100 truncate">
+                                                                            {
+                                                                                panelist.name
+                                                                            }
+                                                                        </p>
+                                                                        <p class="text-[10px] text-slate-500 dark:text-slate-500 font-medium mb-1">
+                                                                            {
+                                                                                panelist.role
+                                                                            }
+                                                                        </p>
+                                                                        <p class="text-[10px] text-slate-600 dark:text-slate-400 line-clamp-2">
+                                                                            {panelist.bio ||
+                                                                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        ),
+                                                    )}
+                                                </div>
+                                            </div>
+                                        )}
+
+                                    {/* Moderator - SECOND */}
+                                    {session.moderator && !isBreak && (
+                                        <div class="space-y-3 pt-3 border-t border-slate-200/50 dark:border-slate-700/30">
+                                            <p class="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+                                                Moderador
+                                            </p>
+                                            <div class="flex gap-3">
+                                                {isImagePath(
+                                                    session.moderator.avatar,
+                                                ) ? (
+                                                    <img
+                                                        src={
+                                                            session.moderator
+                                                                .avatar
+                                                        }
+                                                        alt={
+                                                            session.moderator
+                                                                .name
+                                                        }
+                                                        class="w-10 h-10 rounded-full object-cover flex-shrink-0 shadow-md"
+                                                    />
+                                                ) : (
+                                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0 text-xs font-bold text-white shadow-md dark:from-purple-400 dark:to-pink-400">
+                                                        {
+                                                            session.moderator
+                                                                .avatar
+                                                        }
+                                                    </div>
+                                                )}
+                                                <div class="flex-grow">
+                                                    <div
+                                                        class="bg-slate-50 dark:bg-slate-800/50 rounded p-3 cursor-pointer hover:shadow-md transition-shadow"
+                                                        data-bio-name={
+                                                            session.moderator
+                                                                .name
+                                                        }
+                                                        data-bio-role={
+                                                            session.moderator
+                                                                .role
+                                                        }
+                                                        data-bio-text={
+                                                            session.moderator
+                                                                .bio || ""
+                                                        }
+                                                    >
+                                                        <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">
+                                                            {
+                                                                session
+                                                                    .moderator
+                                                                    .name
+                                                            }
+                                                        </p>
+                                                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">
+                                                            {
+                                                                session
+                                                                    .moderator
+                                                                    .role
+                                                            }
+                                                        </p>
+                                                        {session.moderator
+                                                            .bio && (
+                                                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 line-clamp-3">
+                                                                {
+                                                                    session
+                                                                        .moderator
+                                                                        .bio
+                                                                }
+                                                            </p>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</div>
+
+<!-- Bio Modal -->
+<div
+    id="bioModal"
+    class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4"
+>
+    <div
+        class="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+    >
+        <div
+            class="sticky top-0 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 p-6 flex justify-between items-start"
+        >
+            <div>
+                <h3
+                    id="bioModalName"
+                    class="text-2xl font-bold text-slate-900 dark:text-white mb-1"
+                >
+                </h3>
+                <p
+                    id="bioModalRole"
+                    class="text-sm text-slate-600 dark:text-slate-400"
+                >
+                </p>
+            </div>
+            <button
+                id="bioModalClose"
+                class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 text-2xl leading-none"
+            >
+                ✕
+            </button>
+        </div>
+        <div class="p-6">
+            <p
+                id="bioModalBio"
+                class="text-slate-700 dark:text-slate-300 text-base leading-relaxed"
+            >
+            </p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .schedule-wrapper {
+        /* Glassmorphism base */
+        @apply bg-white dark:bg-slate-900/50 backdrop-blur-sm;
+    }
+
+    .schedule-day-tab {
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            transform: translateY(-2px);
+        }
+
+        &.active {
+            @apply bg-blue-600 dark:bg-blue-500 text-white border-blue-600 dark:border-blue-500;
+        }
+    }
+
+    .day-header {
+        animation: slideInUp 0.5s ease-out;
+    }
+
+    .session-card {
+        animation: fadeIn 0.3s ease-out;
+
+        &:hover {
+            &::before {
+                @apply opacity-100;
+            }
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.02) 0%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 0;
+        }
+    }
+
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Responsive grid adjustments */
+    @media (max-width: 640px) {
+        .schedule-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .session-card {
+            @apply text-sm;
+        }
+    }
+
+    @media (min-width: 641px) and (max-width: 1024px) {
+        .schedule-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const tabs = document.querySelectorAll(
+            ".schedule-day-tab",
+        ) as NodeListOf<HTMLButtonElement>;
+        const dayColumns = document.querySelectorAll(
+            ".schedule-day",
+        ) as NodeListOf<HTMLElement>;
+
+        if (tabs.length === 0 || dayColumns.length === 0) return;
+
+        tabs.forEach((tab, index) => {
+            tab.addEventListener("click", () => {
+                // Update tabs styling
+                tabs.forEach((t) => {
+                    t.classList.remove(
+                        "bg-blue-600",
+                        "dark:bg-blue-500",
+                        "text-white",
+                        "border-blue-600",
+                        "dark:border-blue-500",
+                    );
+                    t.classList.add(
+                        "border-slate-300",
+                        "dark:border-slate-600",
+                        "text-slate-700",
+                        "dark:text-slate-300",
+                    );
+                });
+
+                // Highlight current tab
+                tab.classList.remove(
+                    "border-slate-300",
+                    "dark:border-slate-600",
+                    "text-slate-700",
+                    "dark:text-slate-300",
+                );
+                tab.classList.add(
+                    "bg-blue-600",
+                    "dark:bg-blue-500",
+                    "text-white",
+                    "border-blue-600",
+                    "dark:border-blue-500",
+                );
+
+                // Show/hide day columns
+                dayColumns.forEach((col) => {
+                    col.classList.add("hidden");
+                });
+
+                dayColumns[index].classList.remove("hidden");
+            });
+        });
+
+        // Mark first tab as active by default
+        tabs[0].classList.remove(
+            "border-slate-300",
+            "dark:border-slate-600",
+            "text-slate-700",
+            "dark:text-slate-300",
+        );
+        tabs[0].classList.add(
+            "bg-blue-600",
+            "dark:bg-blue-500",
+            "text-white",
+            "border-blue-600",
+            "dark:border-blue-500",
+        );
+
+        // Bio Modal Functionality
+        const bioModal = document.getElementById("bioModal") as HTMLElement;
+        const bioModalClose = document.getElementById(
+            "bioModalClose",
+        ) as HTMLElement;
+        const bioModalName = document.getElementById(
+            "bioModalName",
+        ) as HTMLElement;
+        const bioModalRole = document.getElementById(
+            "bioModalRole",
+        ) as HTMLElement;
+        const bioModalBio = document.getElementById(
+            "bioModalBio",
+        ) as HTMLElement;
+
+        const bioElements = document.querySelectorAll("[data-bio-name]");
+
+        bioElements.forEach((element) => {
+            element.addEventListener("click", () => {
+                const name = element.getAttribute("data-bio-name") || "";
+                const role = element.getAttribute("data-bio-role") || "";
+                const bio = element.getAttribute("data-bio-text") || "";
+
+                bioModalName.textContent = name;
+                bioModalRole.textContent = role;
+                bioModalBio.textContent = bio;
+
+                bioModal.classList.remove("hidden");
+            });
+        });
+
+        bioModalClose.addEventListener("click", () => {
+            bioModal.classList.add("hidden");
+        });
+
+        bioModal.addEventListener("click", (e) => {
+            if (e.target === bioModal) {
+                bioModal.classList.add("hidden");
+            }
+        });
+    });
+</script>

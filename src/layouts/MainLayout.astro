@@ -76,7 +76,11 @@ const {
   <body
     class="bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-50 transition-colors duration-300"
   >
-    <Navbar currentPage={currentPage} lang={lang} />
+    <Navbar
+      currentPage={currentPage}
+      lang={lang}
+      currentPath={Astro.url.pathname}
+    />
     <main>
       <slot />
     </main>
