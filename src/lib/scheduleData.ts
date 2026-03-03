@@ -165,12 +165,12 @@ export const dayColumns: DayColumn[] = [
             },
             {
                 time: "10:00 - 11:15",
-                title: "Desarrollo y aplicación de biosensores basados en principios de biología sintética",
+                title: "Uso y abuso de factores de transcripción bacterianos",
                 type: "research_lecture",
                 icon: "🎓",
                 description: "Desarrollo y aplicación de biosensores basados en principios de biología sintética para detección de analitos.",
                 speakers: [
-                    { name: "Daniel Guerra Giraldez", role: "Ponente", avatar: "/symposium-cbs/images/panelist/Daniel_guerra.jpg", institution: "UPCH", bio: "Constante interés en tópicos de biofísica, bioquímica y biología molecular orientados a la comprensión fundamental de los seres vivos, y al desarrollo de aplicaciones diversas. Actualmente desarrolla biosensores para la detección de contaminación con metales pesados, el desarrollo de nuevos fármacos contra M. tuberculosis y aplicaciones de biología sintetica en materiales. Obtuvo el doctorado en la Universidad Católica de Lovaina, investigando enzimología y metabolismo de tripanosomátidos. Trabajó como postdoc en biofísica de moléculas individuales en la Universidad de California en Berkeley. Como director del Laboratorio de Moléculas Individuales de la Facultad de Ciencias de la UPCH, desarrolla proyectos de investigación sobre regulación de la expresión genética en bacterias, el plegamiento de proteínas, y diversas aplicaciones biotecnológicas." },
+                    { name: "Daniel Guerra Giraldez", role: "Ponente", avatar: "/symposium-cbs/images/panelist/Daniel_guerra.jpg", institution: "UPCH", bio: "El Dr. Daniel Guerra Giraldez es Profesor en la Facultad de Ciencias e Ingeniería, Jefe del Departamento Académico de Ingeniería y Director del Laboratorio de Moléculas Individuales en la Universidad Peruana Cayetano Heredia. Su trabajo acorta la brecha entre la biofísica fundamental y el potencial transformador de la biología sintética, abarcando desde el estudio de alta resolución en Biofísica de Moléculas Individuales hasta la ingeniería de circuitos genéticos funcionales. En el ecosistema de la biología sintética, el Dr. Guerra desarrolla Biosensores, del tipo de Célula Entera, de transcripción-traducción libre de células, y de proteínas quiméricas, destacando sistemas para la detección de mercurio, arsénico y cadmio con alta especificidad. Sus investigaciones sobre la dinámica de la transcripción incluye el ensayo de nuevos inhibidores de la ARN polimerasa de Mycobacterium tuberculosis. Desde su laboratorio, integra la red Reclone, que aboga por la Biología Molecular de Código Abierto (Open-Source). Al crear y difundir herramientas para la fabricación local de enzimas, está ayudando a descentralizar la biotecnología y a empoderar a una nueva generación de científicos en América Latina." },
                 ],
                 moderator: { name: "Valery Velasquez", role: "Moderador", avatar: "/symposium-cbs/images/team/Valery_Velasquez.jpg", bio: "Miembro del comité académico y alianzas del I Simposio Internacional de Biología Sintética CBS 2026" },
             },
@@ -206,8 +206,8 @@ export const dayColumns: DayColumn[] = [
                 description: "Diálogo abierto sobre cómo los estudiantes y comunidades impulsan la investigación y adopción de biología sintética.",
                 moderator: { name: "Mijael Espinoza", role: "Moderador", avatar: "/symposium-cbs/images/team/Mijael_Espinoza.jpg", bio: "Miembro del comité académico y alianzas del I Simposio Internacional de Biología Sintética CBS 2026" },
                 panelists: [
-                    { name: "Lya Torres", role: "iGEM Ambassador", avatar: "/symposium-cbs/images/panelist/Lya_conversatorio.jpeg", bio: "Egresada de la Lic. en Biotecnología, con experiencia en investigación experimental en ingeniería de proteínas y evaluación biológica. Coordinadora del laboratorio experimental de su equipo iGEM en 2025. Actual embajadora de Latinoamérica en iGEM" },
-                    { name: "Mariana Fernandez", role: "iGEM Ambassador", avatar: "/symposium-cbs/images/panelist/Mariana_Rodriguez.jpg", bio: "Mariana Rodríguez es estudiante mexicana de Ingeniería en Biotecnología en el Tecnológico de Monterrey, Campus Chihuahua. Apasionada por la biología y la innovación científica, participó en iGEM 2025, donde destacó por desarrollar soluciones biotecnológicas con impacto positivo en su comunidad. " },
+                    { name: "Lya Torres", role: "Embajadora iGEM", avatar: "/symposium-cbs/images/panelist/Lya_conversatorio.jpeg", bio: "Egresada de la Lic. en Biotecnología, con experiencia en investigación experimental en ingeniería de proteínas y evaluación biológica. Coordinadora del laboratorio experimental de su equipo iGEM en 2025. Actual embajadora de Latinoamérica en iGEM" },
+                    { name: "Mariana Fernandez", role: "Embajadora iGEM", avatar: "/symposium-cbs/images/panelist/Mariana_Rodriguez.jpg", bio: "Mariana Rodríguez es estudiante mexicana de Ingeniería en Biotecnología en el Tecnológico de Monterrey, Campus Chihuahua. Apasionada por la biología y la innovación científica, participó en iGEM 2025, donde destacó por desarrollar soluciones biotecnológicas con impacto positivo en su comunidad. " },
                     { name: "Nelzy Mendoza", role: "Investigadora Peruana", avatar: "/symposium-cbs/images/panelist/Nelzy_mendoza.jpg", bio: "Bachiller en Bioingeniería (2025) con experiencia en biología sintética e ingeniería de tejidos. Integrante de AylluGene en iGEM Design League 2023 donde su equipo obtuvo Medalla de Plata y el reconocimeinto “Best Partnerships & Collaboration”. Realizó estancias en Max Planck MtL y University of Alberta. Reconocida como Leader of Tomorrow por Global Biotech Revolution (GBR), lo cual le permitió participar en el GAP Summit 2025 en la universidad de Cambridge." },
                 ],
             },
@@ -257,7 +257,7 @@ export const dayColumns: DayColumn[] = [
             },
             {
                 time: "02:00 - 03:15",
-                title: "Aplicación de Mycoplasma sp como chasis en la producción de moléculas de interés biomédico",
+                title: "Aplicación de Mycoplasma sp. como chasis en la producción de moléculas de interés biomédico",
                 type: "research_lecture",
                 icon: "🎓",
                 description: "Uso innovador de Mycoplasma como plataforma celular para síntesis de compuestos farmacéuticos y biomédicos.",
