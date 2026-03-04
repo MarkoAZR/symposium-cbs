@@ -56,23 +56,35 @@ const isRegistrationOpen = currentDate < closingDate;
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full">
     <div class="lg:w-2/3 space-y-6">
       <!-- Badge -->
-      {
-        isRegistrationOpen ? (
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-600/20 border border-secondary-600/30 backdrop-blur-sm">
-            <span class="w-2 h-2 rounded-full bg-secondary-600 animate-pulse" />
-            <span class="text-secondary-300 font-semibold text-sm tracking-wide uppercase">
-              Registro Abierto
-            </span>
-          </div>
-        ) : (
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/20 border border-red-500/30 backdrop-blur-sm">
-            <span class="w-2 h-2 rounded-full bg-red-500" />
-            <span class="text-red-300 font-semibold text-sm tracking-wide uppercase">
-              Registro Cerrado
-            </span>
-          </div>
-        )
-      }
+      <!-- Badge -->
+      <div
+        id="badge-open"
+        class={isRegistrationOpen
+          ? "inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-600/20 border border-secondary-600/30 backdrop-blur-sm"
+          : "hidden"}
+      >
+        <span class="w-2 h-2 rounded-full bg-secondary-600 animate-pulse"
+        ></span>
+        <span
+          class="text-secondary-300 font-semibold text-sm tracking-wide uppercase"
+        >
+          Registro Abierto
+        </span>
+      </div>
+
+      <div
+        id="badge-closed"
+        class={!isRegistrationOpen
+          ? "inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/20 border border-red-500/30 backdrop-blur-sm"
+          : "hidden"}
+      >
+        <span class="w-2 h-2 rounded-full bg-red-500"></span>
+        <span
+          class="text-red-300 font-semibold text-sm tracking-wide uppercase"
+        >
+          Registro Cerrado
+        </span>
+      </div>
 
       <!-- Title -->
       <h1
@@ -92,17 +104,16 @@ const isRegistrationOpen = currentDate < closingDate;
 
       <!-- CTA Buttons -->
       <div class="flex flex-col sm:flex-row gap-4 mb-12">
-        {
-          isRegistrationOpen && (
-            <a
-              href={ctaHref}
-              class="inline-flex justify-center items-center px-8 py-4 bg-secondary-600 hover:bg-secondary-500 text-neutral-900 font-bold rounded-lg transition-all transform hover:-translate-y-1 shadow-[0_0_20px_rgba(132,204,22,0.4)]"
-            >
-              {ctaText}
-              <span class="material-icons ml-2">arrow_forward</span>
-            </a>
-          )
-        }
+        <a
+          id="cta-register"
+          href={ctaHref}
+          class={isRegistrationOpen
+            ? "inline-flex justify-center items-center px-8 py-4 bg-secondary-600 hover:bg-secondary-500 text-neutral-900 font-bold rounded-lg transition-all transform hover:-translate-y-1 shadow-[0_0_20px_rgba(132,204,22,0.4)]"
+            : "hidden"}
+        >
+          {ctaText}
+          <span class="material-icons ml-2">arrow_forward</span>
+        </a>
         <a
           href="#about"
           class="inline-flex justify-center items-center px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-lg transition-all"
@@ -133,3 +144,43 @@ const isRegistrationOpen = currentDate < closingDate;
     </div>
   </div>
 </header>
+
+<script>
+  function updateRegistrationStatus() {
+    // Fecha límite: 4 de marzo a las 12:00 PM GMT-5
+    const closingDate = new Date("2026-03-04T12:00:00-05:00");
+    const currentDate = new Date();
+    const isRegistrationOpen = currentDate < closingDate;
+
+    const badgeOpen = document.getElementById("badge-open");
+    const badgeClosed = document.getElementById("badge-closed");
+    const ctaRegister = document.getElementById("cta-register");
+
+    if (badgeOpen && badgeClosed) {
+      if (isRegistrationOpen) {
+        badgeOpen.classList.remove("hidden");
+        badgeOpen.classList.add("inline-flex");
+        badgeClosed.classList.add("hidden");
+        badgeClosed.classList.remove("inline-flex");
+      } else {
+        badgeOpen.classList.add("hidden");
+        badgeOpen.classList.remove("inline-flex");
+        badgeClosed.classList.remove("hidden");
+        badgeClosed.classList.add("inline-flex");
+      }
+    }
+
+    if (ctaRegister) {
+      if (isRegistrationOpen) {
+        ctaRegister.classList.remove("hidden");
+        ctaRegister.classList.add("inline-flex");
+      } else {
+        ctaRegister.classList.add("hidden");
+        ctaRegister.classList.remove("inline-flex");
+      }
+    }
+  }
+
+  // Update on client load to override SSG if needed
+  updateRegistrationStatus();
+</script>
