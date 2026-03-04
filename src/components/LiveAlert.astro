@@ -1,0 +1,131 @@
+---
+interface Props {
+    lang?: string;
+    testMode?: boolean; // For testing visibility
+}
+
+const { lang = "es", testMode = false } = Astro.props;
+
+const translations = {
+    es: {
+        message: "🔴 ¡Estamos EN VIVO!",
+        cta: "Únete a la transmisión en YouTube",
+        ariaClose: "Cerrar aviso",
+    },
+    en: {
+        message: "🔴 We are LIVE!",
+        cta: "Join the YouTube stream",
+        ariaClose: "Close alert",
+    },
+};
+
+const t = translations[lang as keyof typeof translations] || translations.es;
+const YOUTUBE_LINK = "https://www.youtube.com/@cbs-unmsm7189";
+// The Event target date: 05 de Marzo 2026, 09:30 AM (GMT-5)
+const TARGET_DATE = "2026-03-05T09:30:00-05:00";
+---
+
+<div
+    id="live-stream-alert"
+    class={`${testMode ? "flex" : "hidden"} relative w-full bg-gradient-to-r from-red-600/90 hover:from-red-600 to-red-800/90 text-white shadow-md z-[60] overflow-hidden transition-all duration-300 animate-fade-in backdrop-blur-sm border-b border-red-500/50`}
+    data-target-date={TARGET_DATE}
+    data-test-mode={testMode.toString()}
+>
+    <!-- Decorative background pulse -->
+    <div
+        class="absolute inset-0 bg-red-500 opacity-20 animate-pulse-soft pointer-events-none"
+    >
+    </div>
+
+    <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-2.5 sm:py-3 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 relative"
+    >
+        <div
+            class="flex items-center gap-2 text-sm sm:text-base font-medium tracking-wide"
+        >
+            <span class="flex h-2.5 w-2.5 relative">
+                <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"
+                ></span>
+                <span
+                    class="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"
+                ></span>
+            </span>
+            <span class="text-white font-bold">{t.message}</span>
+        </div>
+
+        <a
+            href={YOUTUBE_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 px-4 py-1.5 sm:py-1 rounded-full bg-white/20 hover:bg-white text-white hover:text-red-700 text-xs sm:text-sm font-semibold transition-colors duration-200 border border-white/30"
+        >
+            {t.cta}
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                ></path>
+            </svg>
+        </a>
+
+        <!-- Close button -->
+        <button
+            id="close-live-alert"
+            class="absolute right-2 sm:right-4 p-1 rounded-full text-white/80 hover:text-white hover:bg-white/20 transition-colors"
+            aria-label={t.ariaClose}
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+            >
+                <path
+                    fill-rule="evenodd"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+            </svg>
+        </button>
+    </div>
+</div>
+
+<script>
+    function initLiveAlert() {
+        const alert = document.getElementById("live-stream-alert");
+        const closeBtn = document.getElementById("close-live-alert");
+
+        if (!alert || !closeBtn) return;
+
+        // Check if user previously dismissed it
+        const isDismissed =
+            sessionStorage.getItem("liveAlertDismissed") === "true";
+        if (isDismissed) {
+            alert.style.display = "none";
+            return;
+        }
+
+        const testMode = alert.getAttribute("data-test-mode") === "true";
+        const targetDateStr = alert.getAttribute("data-target-date");
+
+        if (targetDateStr) {
+            const targetDate = new Date(targetDateStr).getTime();
+            const now = new Date().getTime();
+
+            // Show alert if we are past the target date, or if test mode is enabled
+            if (now >= targetDate || testMode) {
+                alert.classList.remove("hidden");
+                alert.classList.add("flex");
+            }
+        }
+
+        // Dismiss logic
+        closeBtn.addEventListener("click", () => {
+            alert.style.display = "none";
+            sessionStorage.setItem("liveAlertDismissed", "true");
+        });
+    }
+
+    // Run on initial load and view transitions if used
+    initLiveAlert();
+    document.addEventListener("astro:page-load", initLiveAlert);
+</script>
