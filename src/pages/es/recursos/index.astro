@@ -97,8 +97,44 @@ import AccordionFAQ from "~/components/AccordionFAQ.astro";
       </div>
     </section>
 
+    <!-- Videos Resúmenes Section (Próximamente) -->
+    <section id="video-summaries">
+      <div class="flex items-center gap-4 mb-8">
+        <span
+          class="bg-blue-100 dark:bg-blue-900/50 p-3 rounded-full text-blue-600 dark:text-blue-300"
+        >
+          <span class="material-icons-outlined text-2xl">video_library</span>
+        </span>
+        <div>
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white">
+            Videos Resúmenes
+          </h2>
+          <p class="text-slate-500 dark:text-slate-400 mt-1">
+            Grabaciones de las sesiones del simposio.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="bg-slate-50 dark:bg-slate-800/50 border border-dashed border-slate-300 dark:border-slate-700 rounded-xl p-12 text-center"
+      >
+        <div
+          class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 mb-4"
+        >
+          <span class="material-icons-outlined text-3xl">hourglass_empty</span>
+        </div>
+        <h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-2">
+          Próximamente
+        </h3>
+        <p class="text-slate-500 dark:text-slate-400 max-w-md mx-auto">
+          Los videos resúmenes de las presentaciones y conversatorios estarán
+          disponibles en esta sección al finalizar el simposio.
+        </p>
+      </div>
+    </section>
+
     <!-- Divider -->
-    <div class="border-t border-slate-200 dark:border-slate-700"></div>
+    <div class="border-t border-slate-200 dark:border-slate-700 my-16"></div>
 
     <!-- FAQ Section -->
     <section class="max-w-4xl mx-auto w-full" id="faq">
@@ -139,10 +175,16 @@ import AccordionFAQ from "~/components/AccordionFAQ.astro";
             id: 4,
             question: "¿El certificado es gratuito?",
             answer:
-              "No. Aunque el registro al evento es gratuito, el certificado de asistencia tiene un costo de S/.20 o $6 USD (dependiendo fluctuaciones puede variar). Será a nombre de la Universidad Nacional Mayor de San Marcos, y nuestro equipo se contactará contigo para el pago y envío del certificado después del evento.",
+              "No. Aunque el registro al evento es gratuito, el certificado de asistencia tiene un costo de S/.20 o $10 USD. Será a nombre de la Universidad Nacional Mayor de San Marcos.",
           },
           {
             id: 5,
+            question: "¿Cuáles son los métodos de pago aceptados?",
+            answer:
+              "Para participantes internacionales, el único método de pago aceptado es PayPal debido a las comisiones internacionales. Los participantes en Perú serán contactados con opciones locales (Yape, Plin o transferencias) después del evento.",
+          },
+          {
+            id: 6,
             question: "¿Cuál es el formato del evento?",
             answer:
               "Es un evento totalmente virtual que se realizará a través de Zoom. Las sesiones de ponentes y Conversatorios se llevarán a cabo en vivo y serán grabadas. Se proporcionarán enlaces de acceso a los asistentes registrados antes del evento.",

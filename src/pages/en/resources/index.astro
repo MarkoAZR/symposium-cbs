@@ -97,8 +97,44 @@ import AccordionFAQ from "~/components/AccordionFAQ.astro";
       </div>
     </section>
 
+    <!-- Video Summaries Section (Coming Soon) -->
+    <section id="video-summaries">
+      <div class="flex items-center gap-4 mb-8">
+        <span
+          class="bg-blue-100 dark:bg-blue-900/50 p-3 rounded-full text-blue-600 dark:text-blue-300"
+        >
+          <span class="material-icons-outlined text-2xl">video_library</span>
+        </span>
+        <div>
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white">
+            Video Summaries
+          </h2>
+          <p class="text-slate-500 dark:text-slate-400 mt-1">
+            Recordings of the symposium sessions.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="bg-slate-50 dark:bg-slate-800/50 border border-dashed border-slate-300 dark:border-slate-700 rounded-xl p-12 text-center"
+      >
+        <div
+          class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 mb-4"
+        >
+          <span class="material-icons-outlined text-3xl">hourglass_empty</span>
+        </div>
+        <h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-2">
+          Coming Soon
+        </h3>
+        <p class="text-slate-500 dark:text-slate-400 max-w-md mx-auto">
+          The video summaries of the presentations and panel discussions will be
+          available in this section after the symposium concludes.
+        </p>
+      </div>
+    </section>
+
     <!-- Divider -->
-    <div class="border-t border-slate-200 dark:border-slate-700"></div>
+    <div class="border-t border-slate-200 dark:border-slate-700 my-16"></div>
 
     <!-- FAQ Section -->
     <section class="max-w-4xl mx-auto w-full" id="faq">
@@ -121,31 +157,37 @@ import AccordionFAQ from "~/components/AccordionFAQ.astro";
             id: 1,
             question: "How do I register for the symposium?",
             answer:
-              'Registration is handled through our main portal. Click the "Register Now" button in the top navigation bar. We offer student, academic, and industry tiers. Early bird pricing ends on September 30th.',
+              'Registration is handled through our main portal or social media. Click the "Register" button in the top navigation bar. The event is virtual and free.',
           },
           {
             id: 2,
             question: "When will certificates be issued?",
             answer:
-              "Certificates of attendance will be emailed to all registered participants within 7 business days after the conclusion of the event. Speakers will receive a separate certificate acknowledging their contribution.",
+              "Certificates of attendance will be emailed to all registered participants who have met the participation requirements (attendance of at least 80% of the sessions). You will be contacted immediately after the conclusion of the event.",
           },
           {
             id: 3,
-            question: "Will sessions be recorded?",
+            question: "Will the sessions be recorded?",
             answer:
-              "Yes, all keynote sessions and panel discussions will be recorded. Registered attendees will have access to the recordings for 6 months via the symposium portal starting one week after the event.",
+              "Yes, all speaker sessions and panel discussions will be recorded. Registered attendees will have access to the recordings for 6 months via the symposium email starting one week after the event.",
           },
           {
             id: 4,
-            question: "Is there financial aid available for students?",
+            question: "Is the certificate free?",
             answer:
-              'We offer a limited number of scholarships covering registration fees for undergraduate students. Please visit the "Scholarships" page under the "About" menu to apply before October 1st.',
+              "No. Although registration for the event is free, the certificate of attendance has a cost of S/.20 or $10 USD. It will be issued in the name of the Universidad Nacional Mayor de San Marcos.",
           },
           {
             id: 5,
+            question: "What are the accepted payment methods?",
+            answer:
+              "For international participants, the only accepted payment method is PayPal due to international fees. Participants in Peru will be contacted with local options after the event.",
+          },
+          {
+            id: 6,
             question: "What is the event format?",
             answer:
-              "It is a hybrid event: you can participate in-person in Lima or virtually from anywhere in the world. Both options have full access to all sessions.",
+              "It is a fully virtual event that will be held via Zoom. Speaker sessions and Panel discussions will take place live and will be recorded. Access links will be provided to registered attendees before the event.",
           },
         ]}
       />
